@@ -1,31 +1,121 @@
-# Regressão Linear Simples e Regressão Linear Múltipla
+# 📊 Regressão Linear Múltipla — Previsão de Preços de Imóveis
 
-## Objetivo
+Projeto de Machine Learning desenvolvido em Python que aplica **Regressão Linear Simples** e **Regressão Linear Múltipla** para prever o preço de imóveis com base no dataset público **King County House Sales** (`kc_house_data.csv`).
 
-Este projeto tem como objetivo comparar os modelos de Regressão Linear Simples e Regressão Linear Múltipla utilizando o dataset **kc_house_data.csv**, analisando qual deles explica melhor o preço dos imóveis com base em suas características.
+---
 
-## Conceitos
+## 🎯 Objetivo
+
+Comparar o desempenho dos dois modelos de regressão e demonstrar, na prática, que considerar múltiplas variáveis (quartos, banheiros, área, andares, etc.) resulta em previsões muito mais precisas do que usar apenas uma variável isolada.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+Regressao_Linear_Multipla/
+│
+├── regrecao_multipla.ipynb   # Notebook principal com todo o código e análise
+├── kc_house_data.csv         # Dataset com dados reais de venda de imóveis
+└── README.md                 # Este arquivo
+```
+
+---
+
+## 🗂️ Sobre o Dataset
+
+O arquivo `kc_house_data.csv` contém dados reais de vendas de imóveis no condado de King (Seattle, EUA). Cada linha representa uma casa vendida, com as seguintes colunas utilizadas no projeto:
+
+| Coluna | Descrição |
+|---|---|
+| `price` | Preço de venda da casa (variável alvo — o que queremos prever) |
+| `bedrooms` | Número de quartos |
+| `bathrooms` | Número de banheiros |
+| `sqft_living` | Área útil da casa em pés quadrados |
+| `sqft_lot` | Área do terreno em pés quadrados |
+| `floors` | Número de andares |
+| `condition` | Condição geral do imóvel (1 a 5) |
+| `yr_built` | Ano de construção |
+| `yr_renovated` | Ano da última reforma (0 se nunca reformada) |
+
+---
+
+## 🧠 Conceitos Abordados
 
 ### Regressão Linear Simples
-A Regressão Linear Simples utiliza apenas uma variável independente para prever uma variável dependente. No contexto deste projeto, o preço do imóvel é estimado a partir de apenas uma característica, como por exemplo a área da casa.
+Usa **apenas uma variável** para prever o preço. Por exemplo: prever o preço só com base na área da casa. É simples, mas limitada — o preço de uma casa depende de muito mais fatores.
 
 ### Regressão Linear Múltipla
-A Regressão Linear Múltipla utiliza duas ou mais variáveis independentes para realizar a previsão. Dessa forma, além da área, podem ser consideradas características como número de quartos, banheiros, andares, condição do imóvel e metragem do terreno.
+Usa **várias variáveis ao mesmo tempo** para fazer a previsão. Combina quartos, banheiros, área, condição do imóvel, etc. Isso gera um modelo mais completo e preciso.
 
-## Metodologia
+A equação do modelo é:
 
-1. Importação do dataset `kc_house_data.csv`.
-2. Tratamento e seleção dos dados.
-3. Treinamento do modelo de Regressão Linear Simples.
-4. Treinamento do modelo de Regressão Linear Múltipla.
-5. Comparação dos resultados por métricas de desempenho.
+```
+Preço = β₀ + β₁·quartos + β₂·banheiros + β₃·área + β₄·andares + ...
+```
 
-## Resultados
+Onde cada **β (beta)** é um peso que o modelo aprende automaticamente.
 
-Os resultados demonstram que a Regressão Linear Múltipla apresenta melhor capacidade de previsão dos preços dos imóveis quando comparada à Regressão Linear Simples.
+---
 
-Isso ocorre porque o valor de uma residência não depende apenas de uma única característica, mas da combinação de diversos fatores que influenciam diretamente seu preço de mercado.
+## ⚙️ Metodologia
 
-## Conclusão
+O projeto implementa os modelos **do zero**, sem usar bibliotecas prontas de Machine Learning (como Scikit-learn), utilizando apenas **NumPy** e **Pandas**. O cálculo é feito pela **Equação Normal**:
 
-A Regressão Linear Múltipla é mais adequada para explicar e prever o preço dos imóveis do dataset analisado, pois considera simultaneamente várias características relevantes, resultando em maior precisão e melhor ajuste aos dados observados.
+```
+β = (XᵀX)⁻¹ · Xᵀ · y
+```
+
+**Passo a passo:**
+
+1. Leitura e tratamento do dataset com NumPy e Pandas
+2. Separação das variáveis preditoras (X) e variável alvo (y = preço)
+3. Adição da coluna de intercepto (β₀)
+4. Cálculo dos coeficientes via Equação Normal
+5. Previsão do preço para casas de teste
+6. Comparação entre o preço real e o previsto
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Python 3**
+- **NumPy** — operações matemáticas e matriciais
+- **Pandas** — leitura e manipulação do dataset
+- **Jupyter Notebook** — ambiente de desenvolvimento interativo
+
+---
+
+## ▶️ Como Executar
+
+**Pré-requisitos:** Python 3 instalado com as bibliotecas NumPy e Pandas.
+
+```bash
+# 1. Clone o repositório
+git clone <url-do-repositorio>
+cd Regressao_Linear_Multipla
+
+# 2. Instale as dependências (se necessário)
+pip install numpy pandas jupyter
+
+# 3. Abra o notebook
+jupyter notebook regrecao_multipla.ipynb
+```
+
+Execute as células na ordem para ver os resultados de cada modelo.
+
+---
+
+## 📈 Resultados
+
+O modelo de **Regressão Linear Múltipla** apresentou previsões significativamente mais próximas dos preços reais em comparação à Regressão Linear Simples, confirmando que o preço de um imóvel é determinado pela combinação de múltiplos fatores e não por uma única característica isolada.
+
+---
+
+## 📌 Conclusão
+
+A Regressão Linear Múltipla é a abordagem mais adequada para este problema. Ao considerar simultaneamente diversas características do imóvel, o modelo captura melhor a complexidade do mercado imobiliário, resultando em maior precisão e melhor ajuste aos dados reais.
+
+---
+
+> Projeto desenvolvido para fins acadêmicos — Fatec Jahu | Análise e Desenvolvimento de Sistemas
