@@ -118,4 +118,4 @@ A Regressão Linear Múltipla é a abordagem mais adequada para este problema. A
 
 ---
 
-> Projeto desenvolvido para fins acadêmicos — Fatec Jahu | Análise e Desenvolvimento de Sistemas
+> Projeto desenvolvido para fins acadêmicos — Fatec Jahu | Desenvolvimento de Software Multiplataforma
